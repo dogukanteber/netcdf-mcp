@@ -56,7 +56,7 @@ def get_file_structure(file_path: str) -> str:
         with open_dataset(path=path) as ds:
             structure = {
                 "file": str(path),
-                "dimensions": dict(ds.dims.items()),
+                "dimensions": dict(ds.sizes),
                 "coordinates": {
                     name: build_coordinate_info(coord=coord, name=name)
                     for name, coord in ds.coords.items()
