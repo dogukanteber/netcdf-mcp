@@ -50,10 +50,3 @@ netcdf-mcp
 | `get_spatial_bounds` | Get geographic extent (lat/lon bounds) |
 | `check_cf_compliance` | Verify CF conventions compliance |
 | `explain_variable` | Human-readable explanation of a variable |
-
-## Requirements
-
-- Python 3.13+
-- xarray
-- netCDF4
-- mcp[cli]
