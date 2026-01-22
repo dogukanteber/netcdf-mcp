@@ -119,14 +119,16 @@ def list_variables(file_path: str) -> str:
 
         variables = []
         for name, var in ds.data_vars.items():
-            variables.append({
-                "name": name,
-                "dtype": str(var.dtype),
-                "shape": var.shape,
-                "dims": var.dims,
-                "units": var.attrs.get("units", "unknown"),
-                "long_name": var.attrs.get("long_name", ""),
-            })
+            variables.append(
+                {
+                    "name": name,
+                    "dtype": str(var.dtype),
+                    "shape": var.shape,
+                    "dims": var.dims,
+                    "units": var.attrs.get("units", "unknown"),
+                    "long_name": var.attrs.get("long_name", ""),
+                }
+            )
 
         ds.close()
         return _json_response({"file": str(path), "variables": variables})
@@ -254,19 +256,21 @@ def get_variable_stats(file_path: str, variable_name: str) -> str:
         }
 
         if len(valid_values) > 0:
-            stats.update({
-                "min": float(np.min(valid_values)),
-                "max": float(np.max(valid_values)),
-                "mean": float(np.mean(valid_values)),
-                "std": float(np.std(valid_values)),
-                "percentiles": {
-                    "1%": float(np.percentile(valid_values, 1)),
-                    "25%": float(np.percentile(valid_values, 25)),
-                    "50%": float(np.percentile(valid_values, 50)),
-                    "75%": float(np.percentile(valid_values, 75)),
-                    "99%": float(np.percentile(valid_values, 99)),
-                },
-            })
+            stats.update(
+                {
+                    "min": float(np.min(valid_values)),
+                    "max": float(np.max(valid_values)),
+                    "mean": float(np.mean(valid_values)),
+                    "std": float(np.std(valid_values)),
+                    "percentiles": {
+                        "1%": float(np.percentile(valid_values, 1)),
+                        "25%": float(np.percentile(valid_values, 25)),
+                        "50%": float(np.percentile(valid_values, 50)),
+                        "75%": float(np.percentile(valid_values, 75)),
+                        "99%": float(np.percentile(valid_values, 99)),
+                    },
+                }
+            )
         else:
             stats["warning"] = "No valid (non-NaN) values found"
 
@@ -499,9 +503,7 @@ def check_data_quality(file_path: str, variable_name: str) -> str:
 
 
 @mcp.tool()
-def compare_variables(
-    file_path: str, variable1: str, variable2: str
-) -> str:
+def compare_variables(file_path: str, variable1: str, variable2: str) -> str:
     """Compare two variables for shape compatibility, range differences, and correlation.
 
     Args:
