@@ -5,12 +5,12 @@ from pathlib import Path
 import numpy as np
 import xarray as xr
 
-from climate_mcp_server.dataset import (
+from netcdf_mcp.dataset import (
     TIME_COORDINATE_NAMES,
     find_time_coordinate,
     open_dataset,
 )
-from climate_mcp_server.response import json_response
+from netcdf_mcp.response import json_response
 
 
 def extract_valid_values(values: np.ndarray) -> tuple[np.ndarray, np.ndarray, int]:
@@ -168,6 +168,6 @@ def get_time_range_fallback(*, path: Path, original_error: Exception) -> str:
     except Exception:
         pass
 
-    from climate_mcp_server.response import error_response
+    from netcdf_mcp.response import error_response
 
     return error_response(message=f"Failed to get time range: {original_error}")

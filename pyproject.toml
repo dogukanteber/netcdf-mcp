@@ -1,10 +1,10 @@
 [project]
-name = "climate-mcp-server"
+name = "netcdf-mcp"
 version = "0.1.0"
 description = "MCP server for reading and understanding NetCDF files"
 readme = "README.md"
 authors = [
-    { name = "Dogukan Teber", email = "dogukanteber1@hotmail.com" }
+    { name = "Dogukan Teber" }
 ]
 requires-python = ">=3.13"
 dependencies = [
@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [project.scripts]
-climate-mcp = "climate_mcp_server.server:main"
+netcdf-mcp = "netcdf_mcp.server:main"
 
 [build-system]
 requires = ["hatchling"]

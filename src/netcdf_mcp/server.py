@@ -1,9 +1,9 @@
-"""Climate NetCDF MCP Server - reads and understands NetCDF files for debugging."""
+"""NetCDF MCP Server - reads and understands NetCDF files for debugging."""
 
 import numpy as np
 from mcp.server.fastmcp import FastMCP
 
-from climate_mcp_server.analysis import (
+from netcdf_mcp.analysis import (
     check_physical_constraints,
     check_time_compliance,
     check_variable_attributes,
@@ -12,7 +12,7 @@ from climate_mcp_server.analysis import (
     extract_valid_values,
     get_time_range_fallback,
 )
-from climate_mcp_server.dataset import (
+from netcdf_mcp.dataset import (
     LAT_COORDINATE_NAMES,
     LON_COORDINATE_NAMES,
     find_coordinate,
@@ -21,8 +21,8 @@ from climate_mcp_server.dataset import (
     open_dataset,
     validate_netcdf_path,
 )
-from climate_mcp_server.exceptions import NetCDFError, VariableNotFoundError
-from climate_mcp_server.response import (
+from netcdf_mcp.exceptions import NetCDFError, VariableNotFoundError
+from netcdf_mcp.response import (
     build_coordinate_bounds,
     build_coordinate_info,
     build_time_range_result,
@@ -32,7 +32,7 @@ from climate_mcp_server.response import (
     json_response,
 )
 
-mcp = FastMCP("climate-netcdf")
+mcp = FastMCP("netcdf-mcp")
 
 
 @mcp.tool()

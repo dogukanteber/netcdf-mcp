@@ -1,6 +1,6 @@
-# Climate NetCDF MCP Server
+# NetCDF MCP Server
 
-An MCP server that reads and understands NetCDF files, designed to give coding agents context about climate data files.
+An MCP server that reads and understands NetCDF files, designed to give coding agents context about scientific data files.
 
 ## Installation
 
@@ -17,8 +17,8 @@ Add to your MCP configuration:
 ```json
 {
   "mcpServers": {
-    "climate-netcdf": {
-      "command": "climate-mcp"
+    "netcdf-mcp": {
+      "command": "netcdf-mcp"
     }
   }
 }
@@ -27,7 +27,7 @@ Add to your MCP configuration:
 ### Standalone
 
 ```bash
-climate-mcp
+netcdf-mcp
 ```
 
 ## Tools

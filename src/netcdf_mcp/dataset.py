@@ -5,7 +5,7 @@ from pathlib import Path
 
 import xarray as xr
 
-from climate_mcp_server.exceptions import (
+from netcdf_mcp.exceptions import (
     FileNotFoundError,
     InvalidFileError,
     VariableNotFoundError,
