@@ -12,17 +12,20 @@ uv pip install -e .
 
 ### With Cursor/Claude
 
-Add to your MCP configuration:
+Add to your MCP configuration file (`~/.cursor/mcp.json`):
 
 ```json
 {
   "mcpServers": {
     "netcdf-mcp": {
-      "command": "netcdf-mcp"
+      "command": "/path/to/uv",
+      "args": ["run", "--directory", "/path/to/netcdf-mcp", "netcdf-mcp"]
     }
   }
 }
 ```
+
+Replace `/path/to/uv` with your `uv` binary location (e.g., `/opt/homebrew/bin/uv`) and `/path/to/netcdf-mcp` with where you cloned this repository.
 
 ### Standalone
 
